@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{55312EB7-9A92-4D2A-AFC7-A1E1B988D885}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{363B6E75-963F-4345-B1DD-192C7976AD39}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -60,6 +60,16 @@
               DTS:CreationName="" />
           </DTS:CacheColumns>
         </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ProductId_CategoryId]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{095FE28D-BCC3-403F-AB04-6D022E74D28D}"
+      DTS:ObjectName="ProductId_CategoryId">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=C:\Fclub_DB\ProductId_CategoryId.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -1228,7 +1238,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              localeId="1033"
               name="Lookup Product Categories"
               usesDispositions="true"
               version="6">
@@ -1281,7 +1290,7 @@ where [refTable].[DC_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]};</property>
+                  name="ParameterMap">#{Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[categoryId]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1308,7 +1317,7 @@ where [refTable].[DC_id] = ?</property>
                       refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Inputs[Lookup Input].Columns[categoryId]"
                       cachedDataType="i4"
                       cachedName="categoryId"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]">
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[categoryId]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1334,12 +1343,12 @@ where [refTable].[DC_id] = ?</property>
                   synchronousInputId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[main]"
+                      refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_main]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[main]"
-                      name="main"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_main]"
+                      name="DC_main"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1349,12 +1358,12 @@ where [refTable].[DC_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[sub]"
+                      refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_sub]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[sub]"
-                      name="sub"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_sub]"
+                      name="DC_sub"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1364,12 +1373,12 @@ where [refTable].[DC_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[sub-sub]"
+                      refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_sub-sub]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[sub-sub]"
-                      name="sub-sub"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_sub-sub]"
+                      name="DC_sub-sub"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1414,6 +1423,223 @@ where [refTable].[DC_id] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Extract Data From Microsoft Access DB\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DC_name"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion.Outputs[Data Conversion Output].Columns[DC_name]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC2_deactivate_date]"
+                      cachedDataType="dbDate"
+                      cachedName="DC2_deactivate_date"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0].Columns[DC2_deactivate_date]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC2_price]"
+                      cachedDataType="cy"
+                      cachedName="DC2_price"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0].Columns[DC2_price]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC_active]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="DC_active"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0].Columns[DC_active]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[productId]"
+                      cachedDataType="i4"
+                      cachedName="productId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[productId]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[DC_main]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DC_main"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_main]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[DC_sub]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DC_sub"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_sub]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[DC_sub-sub]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DC_sub-sub"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[DC_sub-sub]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[id]"
+                      name="id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[name]"
+                      name="name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC_name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[deactivate_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[deactivate_date]"
+                      name="deactivate_date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC2_deactivate_date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[price]"
+                      dataType="cy"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[price]"
+                      name="price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC2_price]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[active]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[active]"
+                      name="active">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input].Columns[DC_active]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[main]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[main]"
+                      name="main">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[DC_main]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[sub]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[sub]"
+                      name="sub">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[DC_sub]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[sub-sub]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[sub-sub]"
+                      name="sub-sub">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input].Columns[DC_sub-sub]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -1439,7 +1665,9 @@ where [refTable].[DC_id] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        id, name, price, active, deactivate_date
+FROM            Product
+ORDER BY id</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1456,7 +1684,7 @@ where [refTable].[DC_id] = ?</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -1473,6 +1701,7 @@ where [refTable].[DC_id] = ?</property>
               <outputs>
                 <output
                   refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output]"
+                  isSorted="true"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
@@ -1483,15 +1712,7 @@ where [refTable].[DC_id] = ?</property>
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[id]"
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
-                      name="active"
+                      sortKeyPosition="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[name]"
@@ -1512,6 +1733,15 @@ where [refTable].[DC_id] = ?</property>
                       name="price"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
+                      name="active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[deactivate_date]"
                       dataType="date"
                       errorOrTruncationOperation="Conversion"
@@ -1519,15 +1749,6 @@ where [refTable].[DC_id] = ?</property>
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[deactivate_date]"
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[deactivate_date]"
                       name="deactivate_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[categoryId]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]"
-                      name="categoryId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1537,10 +1758,6 @@ where [refTable].[DC_id] = ?</property>
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
-                      dataType="i2"
-                      name="active" />
-                    <externalMetadataColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[name]"
                       dataType="nText"
                       name="name" />
@@ -1549,13 +1766,13 @@ where [refTable].[DC_id] = ?</property>
                       dataType="i4"
                       name="price" />
                     <externalMetadataColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      dataType="i2"
+                      name="active" />
+                    <externalMetadataColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[deactivate_date]"
                       dataType="date"
                       name="deactivate_date" />
-                    <externalMetadataColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[categoryId]"
-                      dataType="i4"
-                      name="categoryId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1563,12 +1780,6 @@ where [refTable].[DC_id] = ?</property>
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
                     <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[id]"
                       dataType="i4"
@@ -1590,15 +1801,16 @@ where [refTable].[DC_id] = ?</property>
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[active]"
                       name="active" />
                     <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[categoryId]"
-                      dataType="i4"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[categoryId]"
-                      name="categoryId" />
-                    <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[deactivate_date]"
                       dataType="date"
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[deactivate_date]"
                       name="deactivate_date" />
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
                     <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
@@ -1687,55 +1899,56 @@ where [refTable].[DC_id] = ?</property>
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[main]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="main"
-                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[MainCategory]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[main]" />
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[sub]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="sub"
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[SubCategory]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[sub]" />
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[sub]" />
                     <inputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[sub-sub]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="sub-sub"
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[SubSubCategory]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output].Columns[sub-sub]" />
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[sub-sub]" />
                     <inputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[DC_name]"
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[name]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="DC_name"
+                      cachedName="name"
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion.Outputs[Data Conversion Output].Columns[DC_name]" />
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[name]" />
                     <inputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[DC_active]"
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="cy"
+                      cachedName="price"
+                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductSalePrice]"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[price]" />
+                    <inputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[active]"
                       cachedDataType="wstr"
                       cachedLength="15"
-                      cachedName="DC_active"
+                      cachedName="active"
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[IsProductActive]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0].Columns[DC_active]" />
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[active]" />
                     <inputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[DC2_price]"
-                      cachedDataType="cy"
-                      cachedName="DC2_price"
-                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductSalePrice]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0].Columns[DC2_price]" />
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[main]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="main"
+                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[MainCategory]"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[main]" />
                     <inputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[DC2_deactivate_date]"
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].Columns[deactivate_date]"
                       cachedDataType="dbDate"
-                      cachedName="DC2_deactivate_date"
+                      cachedName="deactivate_date"
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input].ExternalColumns[DateOfDeactivation]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0].Columns[DC2_deactivate_date]" />
+                      lineageId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output].Columns[deactivate_date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1808,6 +2021,134 @@ where [refTable].[DC_id] = ?</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductId_CategoryId Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">ProductId_CategoryId</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        productId, categoryId
+FROM            ProductId_CategoryId
+ORDER BY productId</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ProductId_CategoryId]"
+                  connectionManagerRefId="Package.ConnectionManagers[ProductId_CategoryId]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[productId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].ExternalColumns[productId]"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[productId]"
+                      name="productId"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[categoryId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].ExternalColumns[categoryId]"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].Columns[categoryId]"
+                      name="categoryId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].ExternalColumns[productId]"
+                      dataType="i4"
+                      name="productId" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output].ExternalColumns[categoryId]"
+                      dataType="i4"
+                      name="categoryId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[productId]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[productId]"
+                      name="productId" />
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[categoryId]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[categoryId]"
+                      name="categoryId" />
+                    <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -1817,17 +2158,27 @@ where [refTable].[DC_id] = ?</property>
               startId="Package\Extract Data From Microsoft Access DB\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Extract Data From Microsoft Access DB.Paths[Lookup Match Output]"
-              endId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input]"
+              endId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Right Input]"
               name="Lookup Match Output"
               startId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Extract Data From Microsoft Access DB.Paths[Merge Join Output]"
+              endId="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Extract Data From Microsoft Access DB\Merge Join.Outputs[Merge Join Output]" />
             <path
               refId="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output]"
               endId="Package\Extract Data From Microsoft Access DB\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Extract Data From Microsoft Access DB.Paths[Output 0]"
+              refId="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output1]"
               endId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Extract Data From Microsoft Access DB.Paths[Output 0]"
+              endId="Package\Extract Data From Microsoft Access DB\Merge Join.Inputs[Merge Join Left Input]"
               name="Output 0"
               startId="Package\Extract Data From Microsoft Access DB\Data Conversion Script.Outputs[Output 0]" />
           </paths>
@@ -2336,48 +2687,26 @@ where [refTable].[DC_id] = ?</property>
         <NodeLayout
           Size="205,42"
           Id="Package\Extract Data From Microsoft Access DB\Microsoft Access DB"
-          TopLeft="79.18333266899,29" />
+          TopLeft="115.68333266899,29" />
         <NodeLayout
           Size="205,42"
           Id="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB"
-          TopLeft="79.18333266899,332.833330117663" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Extract Data From Microsoft Access DB\Lookup Product Categories"
-          TopLeft="79.18333266899,249" />
+          TopLeft="233.841666334495,378.833330117663" />
         <NodeLayout
           Size="205,42"
           Id="Package\Extract Data From Microsoft Access DB\Data Conversion Script"
-          TopLeft="79.18333266899,169" />
+          TopLeft="115.68333266899,169" />
         <NodeLayout
           Size="205,42"
           Id="Package\Extract Data From Microsoft Access DB\Data Conversion"
-          TopLeft="79.18333266899,96" />
-        <EdgeLayout
-          Id="Package\Extract Data From Microsoft Access DB.Paths[Output 0]"
-          TopLeft="181.68333266899,211">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="115.68333266899,96" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source"
+          TopLeft="389.5,29" />
         <EdgeLayout
           Id="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output]"
-          TopLeft="181.68333266899,71">
+          TopLeft="218.18333266899,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2398,32 +2727,8 @@ where [refTable].[DC_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Data From Microsoft Access DB.Paths[Lookup Match Output]"
-          TopLeft="181.68333266899,291">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.833330117663"
-              Start="0,0"
-              End="0,34.333330117663">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.333330117663" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.3619775588315,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Extract Data From Microsoft Access DB.Paths[Data Conversion Output]"
-          TopLeft="181.68333266899,138">
+          TopLeft="218.18333266899,138">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2443,22 +2748,131 @@ where [refTable].[DC_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Extract Data From Microsoft Access DB\Lookup Product Categories"
+          TopLeft="389.5,101" />
+        <EdgeLayout
+          Id="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output1]"
+          TopLeft="495.25,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Extract Data From Microsoft Access DB\Merge Join"
+          TopLeft="233.841666334495,279" />
+        <EdgeLayout
+          Id="Package\Extract Data From Microsoft Access DB.Paths[Output 0]"
+          TopLeft="218.18333266899,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.3250003321716,68"
+              Start="0,0"
+              End="85.3250003321716,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.4840271055179" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.4840271055179"
+                    Point2="0,40.4840271055179"
+                    Point3="4,40.4840271055179" />
+                  <mssgle:LineSegment
+                    End="81.3250003321716,40.4840271055179" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.3250003321716,40.4840271055179"
+                    Point2="85.3250003321716,40.4840271055179"
+                    Point3="85.3250003321716,44.4840271055179" />
+                  <mssgle:LineSegment
+                    End="85.3250003321716,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Data From Microsoft Access DB.Paths[Lookup Match Output]"
+          TopLeft="492,143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-122.825000332172,136"
+              Start="0,0"
+              End="-122.825000332172,128.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.9680542110358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.9680542110358"
+                    Point2="0,80.9680542110358"
+                    Point3="-4,80.9680542110358" />
+                  <mssgle:LineSegment
+                    End="-118.825000332172,80.9680542110358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-118.825000332172,80.9680542110358"
+                    Point2="-122.825000332172,80.9680542110358"
+                    Point3="-122.825000332172,84.9680542110358" />
+                  <mssgle:LineSegment
+                    End="-122.825000332172,128.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-109.603886884836,85.9680542110358,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Data From Microsoft Access DB.Paths[Merge Join Output]"
+          TopLeft="336.341666334495,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.833330117663"
+              Start="0,0"
+              End="0,50.333330117663">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.333330117663" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Data From Microsoft Access DB\Microsoft Access DB">
     <Properties>
@@ -2473,12 +2887,28 @@ where [refTable].[DC_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract Data From Microsoft Access DB\Lookup Product Categories">
+    design-time-name="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2556,6 +2986,29 @@ where [refTable].[DC_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data From Microsoft Access DB\Lookup Product Categories">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
