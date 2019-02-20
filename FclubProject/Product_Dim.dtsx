@@ -11,11 +11,31 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{F87F1C3C-61C1-458F-9EF3-C06CCCE572F4}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{E3C54DEF-D7B8-498D-BE11-67A30B0E0B66}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C7F7DD6E-5797-4884-9CCF-234BEC608D2F}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Fclub_DB\produktkategori.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[fclub_safe]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0F8A4ABA-4779-4C57-BEB7-0119CBECD103}"
+      DTS:ObjectName="fclub_safe">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=C:\Fclub_DB\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MS Access Database]"
       DTS:CreationName="ODBC"
@@ -1281,7 +1301,7 @@ where [refTable].[DC_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]};</property>
+                  name="ParameterMap">#{Package\Extract Data From Microsoft Access DB\84:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1306,9 +1326,10 @@ where [refTable].[DC_id] = ?</property>
                   <inputColumns>
                     <inputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Inputs[Lookup Input].Columns[categoryId]"
+                      cachedComparisonFlags="2012067418"
                       cachedDataType="i4"
                       cachedName="categoryId"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]">
+                      lineageId="Package\Extract Data From Microsoft Access DB\84:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1328,7 +1349,7 @@ where [refTable].[DC_id] = ?</property>
                 <output
                   refId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Extract Data From Microsoft Access DB\Lookup Product Categories.Inputs[Lookup Input]">
@@ -1465,8 +1486,8 @@ where [refTable].[DC_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Connections[OleDbConnection]"
-                  connectionManagerID="{FC21BADF-6F3F-416D-8105-0CA279077818}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  connectionManagerID="Package.ConnectionManagers[fclub_safe]"
+                  connectionManagerRefId="Package.ConnectionManagers[fclub_safe]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1483,15 +1504,6 @@ where [refTable].[DC_id] = ?</property>
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[id]"
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
-                      name="active"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[name]"
@@ -1512,6 +1524,15 @@ where [refTable].[DC_id] = ?</property>
                       name="price"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[active]"
+                      name="active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[deactivate_date]"
                       dataType="date"
                       errorOrTruncationOperation="Conversion"
@@ -1519,15 +1540,6 @@ where [refTable].[DC_id] = ?</property>
                       externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[deactivate_date]"
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[deactivate_date]"
                       name="deactivate_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[categoryId]"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].Columns[categoryId]"
-                      name="categoryId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1537,10 +1549,6 @@ where [refTable].[DC_id] = ?</property>
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
-                      dataType="i2"
-                      name="active" />
-                    <externalMetadataColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[name]"
                       dataType="nText"
                       name="name" />
@@ -1549,13 +1557,13 @@ where [refTable].[DC_id] = ?</property>
                       dataType="i4"
                       name="price" />
                     <externalMetadataColumn
+                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      dataType="i2"
+                      name="active" />
+                    <externalMetadataColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[deactivate_date]"
                       dataType="date"
                       name="deactivate_date" />
-                    <externalMetadataColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Output].ExternalColumns[categoryId]"
-                      dataType="i4"
-                      name="categoryId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1589,11 +1597,6 @@ where [refTable].[DC_id] = ?</property>
                       dataType="i2"
                       lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[active]"
                       name="active" />
-                    <outputColumn
-                      refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[categoryId]"
-                      dataType="i4"
-                      lineageId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[categoryId]"
-                      name="categoryId" />
                     <outputColumn
                       refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Outputs[OLE DB Source Error Output].Columns[deactivate_date]"
                       dataType="date"
@@ -2138,8 +2141,8 @@ where [refTable].[DC_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Data From Excel To Cache Tranformation\Excel Product Categories Source.Connections[OleDbConnection]"
-                  connectionManagerID="{9E771882-2E6A-4FD3-81DD-6AC77BB61DA4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ProductCategoriesExcel]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2296,11 +2299,11 @@ where [refTable].[DC_id] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="299,42"
+          Size="298.666666666667,42"
           Id="Package\Extract Data From Microsoft Access DB"
           TopLeft="92,123.566666248242" />
         <NodeLayout
-          Size="299,42"
+          Size="298.666666666667,42"
           Id="Package\Load Data From Excel To Cache Tranformation"
           TopLeft="90,39" />
         <EdgeLayout
@@ -2334,23 +2337,23 @@ where [refTable].[DC_id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Microsoft Access DB"
           TopLeft="79.18333266899,29" />
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB"
           TopLeft="79.18333266899,332.833330117663" />
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Lookup Product Categories"
           TopLeft="79.18333266899,249" />
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Data Conversion Script"
           TopLeft="79.18333266899,169" />
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Data Conversion"
           TopLeft="79.18333266899,96" />
         <EdgeLayout
@@ -2372,7 +2375,9 @@ where [refTable].[DC_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,7.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2478,7 +2483,7 @@ where [refTable].[DC_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2488,31 +2493,31 @@ where [refTable].[DC_id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="231,42"
+          Size="230.666666666667,42"
           Id="Package\Load Data From Excel To Cache Tranformation\Cache Transform"
-          TopLeft="113.333333333333,182" />
+          TopLeft="113.333333333333,182.962962945744" />
         <NodeLayout
-          Size="231,42"
+          Size="230.666666666667,42"
           Id="Package\Load Data From Excel To Cache Tranformation\Data Conversion"
           TopLeft="113.333333333333,107" />
         <NodeLayout
-          Size="231,42"
+          Size="230.666666666667,42"
           Id="Package\Load Data From Excel To Cache Tranformation\Excel Product Categories Source"
           TopLeft="113.333333333333,36" />
         <EdgeLayout
           Id="Package\Load Data From Excel To Cache Tranformation.Paths[Data Conversion Output]"
-          TopLeft="228.833333333333,149">
+          TopLeft="228.666666666666,149">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33"
+              EndConnector="0,33.9629629457439"
               Start="0,0"
-              End="0,25.5">
+              End="0,26.4629629457439">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
+                    End="0,26.4629629457439" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
