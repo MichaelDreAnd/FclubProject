@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="SaleFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{F1608F21-99C4-4A57-A550-2BE54D639144}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{5FE987A6-CFA4-4A9E-8128-3BB8DECA385C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -240,6 +240,29 @@
                       cachedLength="50"
                       cachedName="timestamp"
                       lineageId="Package\Data Flow Task\Access Source.Outputs[ODBC Source Output].Columns[timestamp]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[price]"
+                      cachedDataType="i4"
+                      cachedName="price"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Access Source.Outputs[ODBC Source Output].Columns[price]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Access Source.Outputs[ODBC Source Output].Columns[price]} / 100</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">price / 100</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
