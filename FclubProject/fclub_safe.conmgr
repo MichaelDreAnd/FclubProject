@@ -1,7 +1,7 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="fclub_safe"
-  DTS:DTSID="{FC21BADF-6F3F-416D-8105-0CA279077818}"
+  DTS:DTSID="{61E6ECFF-F655-4429-A657-2A22C34313D0}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
