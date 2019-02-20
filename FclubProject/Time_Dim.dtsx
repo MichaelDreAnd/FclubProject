@@ -1,0 +1,57 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/20/2019 12:31:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-68EFA3R"
+  DTS:CreatorName="DESKTOP-68EFA3R\Nicklas HJ"
+  DTS:DTSID="{C8A5DEC0-615A-4E21-AD57-251AB642EDA7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Time_Dim"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{E9CA4590-7467-44FD-9E81-2D5D5AB80130}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2E524DBE-E43E-4F5C-B7CC-D43E6AF39873}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5F266732-EA6E-44B1-A24A-C8D840AD667A}"
+          SQLTask:SqlStatementSource="&#xA;declare @hour int&#xA;&#xA;declare @minute int&#xA;&#xA;declare @second int&#xA;&#xA;&#xA;set @hour=00&#xA;&#xA;&#xA;while @hour&lt;24&#xA;&#xA;begin&#xA;&#xA;set @minute=00&#xA;&#xA;while @minute&lt;60&#xA;&#xA;begin&#xA;&#xA;set @second=00&#xA;&#xA;while @second&lt;60&#xA;&#xA;begin&#xA;&#xA;&#xA;INSERT INTO [dbo].[Dim_Time]&#xA;&#xA;([TimeKey]&#xA;&#xA;,[Hour]&#xA;&#xA;,[Minute]&#xA;&#xA;,[Second])&#xA;&#xA;select&#xA;&#xA;(@hour*10000) + (@minute*100) + @second as TimeKey,&#xA;&#xA;@hour as [Hour],&#xA;&#xA;@minute as [Minute],&#xA;&#xA;@second as [Second]&#xA;&#xA;set @second=@second+1&#xA;&#xA;end&#xA;&#xA;set @minute=@minute+1&#xA;&#xA;end&#xA;&#xA;set @hour=@hour+1&#xA;&#xA;end" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="135,95" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
