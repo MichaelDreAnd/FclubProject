@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{F87F1C3C-61C1-458F-9EF3-C06CCCE572F4}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{55312EB7-9A92-4D2A-AFC7-A1E1B988D885}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1465,7 +1465,7 @@ where [refTable].[DC_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Connections[OleDbConnection]"
-                  connectionManagerID="{FC21BADF-6F3F-416D-8105-0CA279077818}:external"
+                  connectionManagerID="{61E6ECFF-F655-4429-A657-2A22C34313D0}:external"
                   connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -2138,7 +2138,7 @@ where [refTable].[DC_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Data From Excel To Cache Tranformation\Excel Product Categories Source.Connections[OleDbConnection]"
-                  connectionManagerID="{9E771882-2E6A-4FD3-81DD-6AC77BB61DA4}:external"
+                  connectionManagerID="{3FFAB357-9472-492F-879B-0E44C63E2457}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ProductCategoriesExcel]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -2498,7 +2498,7 @@ where [refTable].[DC_id] = ?</property>
         <NodeLayout
           Size="231,42"
           Id="Package\Load Data From Excel To Cache Tranformation\Excel Product Categories Source"
-          TopLeft="113.333333333333,36" />
+          TopLeft="113.333333333333,35" />
         <EdgeLayout
           Id="Package\Load Data From Excel To Cache Tranformation.Paths[Data Conversion Output]"
           TopLeft="228.833333333333,149">
@@ -2523,18 +2523,18 @@ where [refTable].[DC_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Data From Excel To Cache Tranformation.Paths[Excel Source Output]"
-          TopLeft="228.833333333333,78">
+          TopLeft="228.833333333333,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="0,30"
               Start="0,0"
-              End="0,21.5">
+              End="0,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
