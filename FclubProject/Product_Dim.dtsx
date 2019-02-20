@@ -5,21 +5,21 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-IJ978D0"
   DTS:CreatorName="DESKTOP-IJ978D0\Michael"
-  DTS:DTSID="{F433BA42-1CF8-4B19-BD1A-EBAE53D175CC}"
+  DTS:DTSID="{1B641720-D6D3-453D-B5AC-FD833A54BAFA}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{D47531EF-C3AB-4B20-BD1E-C80F98FD3CD0}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{41DBB8C4-53A7-47B9-824F-46D919DF7E49}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MS Access Database]"
       DTS:CreationName="ODBC"
-      DTS:DTSID="{830E5F11-06A1-4EFC-918A-711587CF6677}"
+      DTS:DTSID="{7066363E-0D97-4C90-AD94-9B6BB7986665}"
       DTS:ObjectName="MS Access Database">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -29,7 +29,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[ProductCategories_CM]"
       DTS:CreationName="CACHE"
-      DTS:DTSID="{857DB3C1-6DC8-4723-B6B3-72550AAEB27C}"
+      DTS:DTSID="{7DA0D526-65A4-460A-B5EB-C0423E4E79A6}"
       DTS:ObjectName="ProductCategories_CM">
       <DTS:ObjectData>
         <DTS:ConnectionManager>
@@ -38,25 +38,25 @@
               DTS:DataType="3"
               DTS:IndexPosition="1"
               DTS:ObjectName="DC_id"
-              DTS:DTSID="{0BFC50B8-B67E-48D2-B9C4-FFD837DFA685}"
+              DTS:DTSID="{F3B554CA-FF9F-4AA4-B139-06999028145D}"
               DTS:CreationName="" />
             <DTS:CacheColumn
               DTS:DataType="130"
               DTS:Length="50"
               DTS:ObjectName="DC_main"
-              DTS:DTSID="{829B578E-6084-451F-BA51-6B677427EB0E}"
+              DTS:DTSID="{D3352345-D8F3-427B-8137-95A63F5E93C4}"
               DTS:CreationName="" />
             <DTS:CacheColumn
               DTS:DataType="130"
               DTS:Length="50"
               DTS:ObjectName="DC_sub"
-              DTS:DTSID="{A4401BFD-0708-4844-98D8-5C837E42AEE2}"
+              DTS:DTSID="{9BD77306-C62F-4268-A693-ED7A92E7EDC2}"
               DTS:CreationName="" />
             <DTS:CacheColumn
               DTS:DataType="130"
               DTS:Length="50"
               DTS:ObjectName="DC_sub-sub"
-              DTS:DTSID="{370DBCF1-D724-4E96-827D-A5AF17A7023D}"
+              DTS:DTSID="{3E6640DE-1637-4F79-BBD3-89FA40E1C68C}"
               DTS:CreationName="" />
           </DTS:CacheColumns>
         </DTS:ConnectionManager>
@@ -69,7 +69,7 @@
       DTS:refId="Package\Extract Data From Microsoft Access DB"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{DC5A1AF7-EE2B-4702-86CA-79A03CDFDA23}"
+      DTS:DTSID="{942F8DDD-861B-457F-9070-11D6C0BFFB95}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="1033"
       DTS:ObjectName="Extract Data From Microsoft Access DB">
@@ -1838,7 +1838,7 @@ where [refTable].[DC_id] = ?</property>
       DTS:refId="Package\Load Data From Excel To Cache Tranformation"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{4804D5D7-4072-4827-90C9-66273A017EE0}"
+      DTS:DTSID="{BC67C497-6F7F-446A-A614-DD54E9DBEAA4}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="1033"
       DTS:ObjectName="Load Data From Excel To Cache Tranformation"
@@ -2138,8 +2138,8 @@ where [refTable].[DC_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Data From Excel To Cache Tranformation\Excel Product Categories Source.Connections[OleDbConnection]"
-                  connectionManagerID="{9E771882-2E6A-4FD3-81DD-6AC77BB61DA4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ProductCategoriesExcel]"
+                  connectionManagerID="{9E771882-2E6A-4FD3-81DD-6AC77BB61DA4}:invalid"
+                  connectionManagerRefId="{9E771882-2E6A-4FD3-81DD-6AC77BB61DA4}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2277,7 +2277,7 @@ where [refTable].[DC_id] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{A5140CF0-6D07-4C6B-9126-1B69C8E46026}"
+      DTS:DTSID="{3D8D5BC8-98B1-4A51-9A66-1E5521D6F2C2}"
       DTS:From="Package\Load Data From Excel To Cache Tranformation"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
