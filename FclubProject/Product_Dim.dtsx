@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{D47531EF-C3AB-4B20-BD1E-C80F98FD3CD0}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{F87F1C3C-61C1-458F-9EF3-C06CCCE572F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1465,8 +1465,8 @@ where [refTable].[DC_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Extract Data From Microsoft Access DB\Microsoft Access DB.Connections[OleDbConnection]"
-                  connectionManagerID="{D96F8C23-7039-4A56-8FB3-1A9A66DB7DC3}:invalid"
-                  connectionManagerRefId="{D96F8C23-7039-4A56-8FB3-1A9A66DB7DC3}:invalid"
+                  connectionManagerID="{FC21BADF-6F3F-416D-8105-0CA279077818}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
