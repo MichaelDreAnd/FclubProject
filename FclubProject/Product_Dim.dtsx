@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{363B6E75-963F-4345-B1DD-192C7976AD39}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{9EAB25EC-2AD3-478B-9A1D-CCDA65A07AE2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2647,11 +2647,11 @@ ORDER BY productId</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="299,42"
+          Size="298.666666666667,42"
           Id="Package\Extract Data From Microsoft Access DB"
           TopLeft="92,123.566666248242" />
         <NodeLayout
-          Size="299,42"
+          Size="298.666666666667,42"
           Id="Package\Load Data From Excel To Cache Tranformation"
           TopLeft="90,39" />
         <EdgeLayout
@@ -2685,45 +2685,67 @@ ORDER BY productId</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
+          Id="Package\Extract Data From Microsoft Access DB\Merge Join"
+          TopLeft="233.841666334495,279" />
+        <NodeLayout
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Microsoft Access DB"
           TopLeft="115.68333266899,29" />
         <NodeLayout
-          Size="205,42"
+          Size="205.333333333334,42"
           Id="Package\Extract Data From Microsoft Access DB\Microsoft SQL Server DB"
           TopLeft="233.841666334495,378.833330117663" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Extract Data From Microsoft Access DB\Data Conversion Script"
-          TopLeft="115.68333266899,169" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Extract Data From Microsoft Access DB\Data Conversion"
-          TopLeft="115.68333266899,96" />
         <NodeLayout
           Size="218,42"
           Id="Package\Extract Data From Microsoft Access DB\ProductId_CategoryId Source"
           TopLeft="389.5,29" />
+        <NodeLayout
+          Size="205.333333333334,42"
+          Id="Package\Extract Data From Microsoft Access DB\Lookup Product Categories"
+          TopLeft="389.5,101" />
+        <NodeLayout
+          Size="205.333333333334,42"
+          Id="Package\Extract Data From Microsoft Access DB\Data Conversion Script"
+          TopLeft="115.68333266899,169" />
+        <NodeLayout
+          Size="205.333333333334,42"
+          Id="Package\Extract Data From Microsoft Access DB\Data Conversion"
+          TopLeft="115.68333266899,96" />
         <EdgeLayout
-          Id="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output]"
-          TopLeft="218.18333266899,71">
+          Id="Package\Extract Data From Microsoft Access DB.Paths[Lookup Match Output]"
+          TopLeft="492,143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25"
+              EndConnector="-122.825000332172,136"
               Start="0,0"
-              End="0,17.5">
+              End="-122.825000332172,128.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5" />
+                    End="0,76.9680542110358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.9680542110358"
+                    Point2="0,80.9680542110358"
+                    Point3="-4,80.9680542110358" />
+                  <mssgle:LineSegment
+                    End="-118.825000332172,80.9680542110358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-118.825000332172,80.9680542110358"
+                    Point2="-122.825000332172,80.9680542110358"
+                    Point3="-122.825000332172,84.9680542110358" />
+                  <mssgle:LineSegment
+                    End="-122.825000332172,128.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-109.603886884836,85.9680542110358,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2748,36 +2770,6 @@ ORDER BY productId</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Extract Data From Microsoft Access DB\Lookup Product Categories"
-          TopLeft="389.5,101" />
-        <EdgeLayout
-          Id="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output1]"
-          TopLeft="495.25,71">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30"
-              Start="0,0"
-              End="0,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Extract Data From Microsoft Access DB\Merge Join"
-          TopLeft="233.841666334495,279" />
         <EdgeLayout
           Id="Package\Extract Data From Microsoft Access DB.Paths[Output 0]"
           TopLeft="218.18333266899,211">
@@ -2813,39 +2805,47 @@ ORDER BY productId</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Data From Microsoft Access DB.Paths[Lookup Match Output]"
-          TopLeft="492,143">
+          Id="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output1]"
+          TopLeft="495.25,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-122.825000332172,136"
+              EndConnector="0,30"
               Start="0,0"
-              End="-122.825000332172,128.5">
+              End="0,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.9680542110358" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,76.9680542110358"
-                    Point2="0,80.9680542110358"
-                    Point3="-4,80.9680542110358" />
-                  <mssgle:LineSegment
-                    End="-118.825000332172,80.9680542110358" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-118.825000332172,80.9680542110358"
-                    Point2="-122.825000332172,80.9680542110358"
-                    Point3="-122.825000332172,84.9680542110358" />
-                  <mssgle:LineSegment
-                    End="-122.825000332172,128.5" />
+                    End="0,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-109.603886884836,85.9680542110358,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Data From Microsoft Access DB.Paths[OLE DB Source Output]"
+          TopLeft="218.18333266899,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2909,6 +2909,29 @@ ORDER BY productId</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data From Microsoft Access DB\Lookup Product Categories">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2986,29 +3009,6 @@ ORDER BY productId</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Data From Microsoft Access DB\Lookup Product Categories">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

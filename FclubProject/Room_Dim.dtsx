@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Room_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{E1447365-D32A-4615-B083-2115A9E07F48}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{58007A61-F655-4AF7-AA00-9DC0EBD49EE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
