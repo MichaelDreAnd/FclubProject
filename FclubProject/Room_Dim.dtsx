@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Room_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{58007A61-F655-4AF7-AA00-9DC0EBD49EE5}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{3E1E62C2-6866-4C17-BACD-E87924C1A622}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1128,7 +1128,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.770698319576,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520834,136.770698319576,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

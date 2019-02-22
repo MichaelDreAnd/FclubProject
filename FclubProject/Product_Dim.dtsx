@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Product_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{9EAB25EC-2AD3-478B-9A1D-CCDA65A07AE2}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{471559BD-A5C6-47F7-A4BD-A90BF8D37DE7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2918,7 +2918,7 @@ ORDER BY productId</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>

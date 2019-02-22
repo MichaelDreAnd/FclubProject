@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="SaleFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{5FE987A6-CFA4-4A9E-8128-3BB8DECA385C}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{1174B77C-169E-4F36-8B1F-332FF1180A3A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -33,12 +33,12 @@
           <components>
             <component
               refId="Package\Data Flow Task\Access Source"
-              componentClassID="Attunity.SSISODBCSrc"
+              componentClassID="Microsoft.SSISODBCSrc"
               description="ODBC Source"
               localeId="1033"
               name="Access Source"
               usesDispositions="true"
-              version="7">
+              version="1">
               <properties>
                 <property
                   dataType="System.String"
@@ -90,8 +90,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Access Source.Connections[ODBCConnection]"
-                  connectionManagerID="{84633109-137E-4FB1-816C-A093BF9D2998}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Access connection]"
+                  connectionManagerID="{84633109-137E-4FB1-816C-A093BF9D2998}:invalid"
+                  connectionManagerRefId="{84633109-137E-4FB1-816C-A093BF9D2998}:invalid"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -375,7 +375,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -409,8 +409,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{5F266732-EA6E-44B1-A24A-C8D840AD667A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[localhost.FClub_DW]"
+                  connectionManagerID="{5F266732-EA6E-44B1-A24A-C8D840AD667A}:invalid"
+                  connectionManagerRefId="{5F266732-EA6E-44B1-A24A-C8D840AD667A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -484,12 +484,12 @@
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
                       dataType="wstr"
-                      length="15"
+                      length="50"
                       name="DateID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
                       dataType="wstr"
-                      length="15"
+                      length="50"
                       name="TimeID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RoomID]"
@@ -557,7 +557,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151,42"
+          Size="150.666666666667,42"
           Id="Package\Data Flow Task"
           TopLeft="90,62" />
       </GraphLayout>
@@ -569,13 +569,13 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="170.666666666667,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="263,266" />
+        <NodeLayout
           Size="154,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="268,172" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="263,266" />
         <NodeLayout
           Size="146,42"
           Id="Package\Data Flow Task\Access Source"
