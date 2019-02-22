@@ -8,9 +8,9 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1224" scrolltop="-1918" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="10301" y="14023" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1224" scrolltop="-1918" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6482" y="6085" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
-              <ddsxmlobjectstreamwrapper binary="01000000900180380100065461686f6d61" />
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
             </font>
             <mouseicon>
               <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
@@ -68,7 +68,7 @@
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
       <Value>
-        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+        <DiagramLayout ZoomPercent="100" ViewPortX="101" ViewPortY="0" xmlns="">
           <Shapes NodeWidth="173">
             <Shape Id="Date Key" Expanded="true">
               <Attributes>
@@ -102,13 +102,13 @@
               <Attributes>
                 <Attribute Id="Quarter Number Of Year" />
               </Attributes>
-              <Position x="683" y="71" />
+              <Position x="683" y="68" />
             </Shape>
             <Shape Id="Year" Expanded="false">
               <Attributes>
                 <Attribute Id="Year" />
               </Attributes>
-              <Position x="905" y="71" />
+              <Position x="905" y="68" />
             </Shape>
           </Shapes>
         </DiagramLayout>
@@ -163,7 +163,6 @@
         </AttributeRelationship>
         <AttributeRelationship dwd:design-time-name="4409248e-8fe2-46ab-934f-f6623d231e31">
           <AttributeID>Day Number Of Month</AttributeID>
-          <RelationshipType>Rigid</RelationshipType>
           <Name>Day Number Of Month</Name>
         </AttributeRelationship>
       </AttributeRelationships>
@@ -210,14 +209,43 @@
       <Name>Day Number Of Month</Name>
       <Type>DayOfMonth</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="d3f9baea-c69b-46bb-9fd3-aa29584ac040">
+        <KeyColumn dwd:design-time-name="cb283744-ba31-45ef-b791-c5e7d048e7a0">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="3c226168-4952-4e60-be65-bd4a0a392a4b">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="97c4cd64-0444-4bcf-83e1-c7279f47330c">
             <TableID>dbo_Dim_Date</TableID>
             <ColumnID>DayNumberOfMonth</ColumnID>
           </Source>
         </KeyColumn>
+        <KeyColumn dwd:design-time-name="0b6e3658-7d5c-4a63-aa16-0a80e8492f86">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8f1d0975-b8d1-4bd2-9f40-027c9e751e17">
+            <TableID>dbo_Dim_Date</TableID>
+            <ColumnID>Year</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="7a92c6a9-3307-430a-aba5-9468708344d7">
+          <DataType>WChar</DataType>
+          <DataSize>10</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2ac4bf08-ac91-4ed5-8f0e-6354d3a13fac">
+            <TableID>dbo_Dim_Date</TableID>
+            <ColumnID>SeasonOfTheYear</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="1cdfd999-eb65-4b17-8a1f-493ac3ca5d25">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e34a97da-e7cf-4af0-9ea1-d33100df5e54">
+            <TableID>dbo_Dim_Date</TableID>
+            <ColumnID>MonthNumberOfYear</ColumnID>
+          </Source>
+        </KeyColumn>
       </KeyColumns>
+      <NameColumn dwd:design-time-name="61c2adbe-c37b-4d03-8c30-a2d84bb6877b">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="743364c8-b4f2-429e-9b9b-9b5efc080b0f">
+          <TableID>dbo_Dim_Date</TableID>
+          <ColumnID>DayNumberOfMonth</ColumnID>
+        </Source>
+      </NameColumn>
       <AttributeRelationships>
         <AttributeRelationship dwd:design-time-name="df8100b7-8f2a-4b08-a049-daa840d83b45">
           <AttributeID>Month Number Of Year</AttributeID>
@@ -251,14 +279,36 @@
       <Name>Month Number Of Year</Name>
       <Type>MonthOfYear</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="8c86ffc3-c8ec-4b7e-82df-df72d3ec8499">
+        <KeyColumn dwd:design-time-name="81dade09-fe20-4a26-b6e7-36b6a1f8246b">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="a4718a04-a02f-4fd4-a1f4-20a96dd2ad4d">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="88d95c50-cfa6-4589-ba37-d98ab3191b1a">
             <TableID>dbo_Dim_Date</TableID>
             <ColumnID>MonthNumberOfYear</ColumnID>
           </Source>
         </KeyColumn>
+        <KeyColumn dwd:design-time-name="dda3d6e2-5939-4652-af6a-e05c86d0b43f">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5a2ec8f4-0adc-4e55-87bf-db1b64ed6b1e">
+            <TableID>dbo_Dim_Date</TableID>
+            <ColumnID>Year</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="c6336f43-ccf7-4283-8c8c-f186a5ab9fa6">
+          <DataType>WChar</DataType>
+          <DataSize>10</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="726e6b5a-ac5a-4678-adcb-2eda4051336a">
+            <TableID>dbo_Dim_Date</TableID>
+            <ColumnID>SeasonOfTheYear</ColumnID>
+          </Source>
+        </KeyColumn>
       </KeyColumns>
+      <NameColumn dwd:design-time-name="3b9dd49e-b886-457a-a958-046f687a4a89">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="54595631-1bd6-4daa-910f-a4878a83f52d">
+          <TableID>dbo_Dim_Date</TableID>
+          <ColumnID>MonthNumberOfYear</ColumnID>
+        </Source>
+      </NameColumn>
       <AttributeRelationships>
         <AttributeRelationship dwd:design-time-name="5b931f8f-b259-4472-80fd-db390369d0cf">
           <AttributeID>Quarter Number Of Year</AttributeID>
@@ -297,14 +347,28 @@
       <Name>Quarter Number Of Year</Name>
       <Type>QuarterOfYear</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="ac1d9293-0237-4949-90e5-a5834da2dcbf">
+        <KeyColumn dwd:design-time-name="a9b6ad36-bf7f-4dce-b74b-8a3909de4a16">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="fade96a3-14c7-4435-83fb-83d2b943e1b8">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="54c67b52-ca86-4b8b-b2c1-0b95e1d98267">
             <TableID>dbo_Dim_Date</TableID>
             <ColumnID>QuarterNumberOfYear</ColumnID>
           </Source>
         </KeyColumn>
+        <KeyColumn dwd:design-time-name="04a15534-bc92-49f4-a063-7f917ebcda03">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="798e425c-715c-4f0a-bbf1-817615505ba3">
+            <TableID>dbo_Dim_Date</TableID>
+            <ColumnID>Year</ColumnID>
+          </Source>
+        </KeyColumn>
       </KeyColumns>
+      <NameColumn dwd:design-time-name="75c6c950-8b06-4ba6-8679-9f1031bc03d0">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d5203429-854e-4746-8b20-e21faddda2ad">
+          <TableID>dbo_Dim_Date</TableID>
+          <ColumnID>QuarterNumberOfYear</ColumnID>
+        </Source>
+      </NameColumn>
       <AttributeRelationships>
         <AttributeRelationship dwd:design-time-name="8194e738-89b5-43ae-ba1d-a6b96f915661">
           <AttributeID>Year</AttributeID>
@@ -376,11 +440,16 @@
           <Name>Day Number Of Month</Name>
           <SourceAttributeID>Day Number Of Month</SourceAttributeID>
         </Level>
+        <Level dwd:design-time-name="528cf58c-583e-42ee-aaed-f81905bfdace">
+          <ID>Date Key</ID>
+          <Name>Date Key</Name>
+          <SourceAttributeID>Date Key</SourceAttributeID>
+        </Level>
       </Levels>
     </Hierarchy>
     <Hierarchy dwd:design-time-name="77bdb8c3-cf4f-4af8-abb0-dc80f9bfafed">
       <ID>Hierarchy 1</ID>
-      <Name>Hierarchy 1</Name>
+      <Name>Seasonal Hierarchy</Name>
       <Levels>
         <Level dwd:design-time-name="9b466284-8bfd-43c5-9729-abe883300e1a">
           <ID>Season Of The Year</ID>
@@ -396,6 +465,11 @@
           <ID>Day Number Of Month</ID>
           <Name>Day Number Of Month</Name>
           <SourceAttributeID>Day Number Of Month</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="e2e12aba-0431-44f0-ba80-42ac806ad3bc">
+          <ID>Date Key</ID>
+          <Name>Date Key</Name>
+          <SourceAttributeID>Date Key</SourceAttributeID>
         </Level>
       </Levels>
     </Hierarchy>

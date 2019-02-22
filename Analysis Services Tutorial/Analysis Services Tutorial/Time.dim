@@ -8,9 +8,9 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1721" scrolltop="-3056" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="10301" y="14023" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1721" scrolltop="-3056" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6482" y="6085" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
-              <ddsxmlobjectstreamwrapper binary="01000000900180380100065461686f6d61" />
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
             </font>
             <mouseicon>
               <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
@@ -160,14 +160,28 @@
       <Name>Minute</Name>
       <Type>Minutes</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="423f753c-b24e-43a4-b99e-e491daf41cea">
+        <KeyColumn dwd:design-time-name="3a4bf2bb-1b2c-4cad-9e6f-ecba76783991">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="1c7f86a4-2f38-4a6b-ad69-1364fc7dfd63">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="75532d40-156d-4ab7-baaa-2592880e35aa">
             <TableID>dbo_Dim_Time</TableID>
             <ColumnID>Minute</ColumnID>
           </Source>
         </KeyColumn>
+        <KeyColumn dwd:design-time-name="3a804faf-6f23-43ab-bca9-f29d70c5efa3">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="47087aad-ccc6-4cb8-b7bf-224b33625a2a">
+            <TableID>dbo_Dim_Time</TableID>
+            <ColumnID>Hour</ColumnID>
+          </Source>
+        </KeyColumn>
       </KeyColumns>
+      <NameColumn dwd:design-time-name="75a0bdff-1070-4bcb-b3d3-cd233b29448c">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="af99b8bf-09c4-492a-92f9-54487b90e1bf">
+          <TableID>dbo_Dim_Time</TableID>
+          <ColumnID>Minute</ColumnID>
+        </Source>
+      </NameColumn>
       <AttributeRelationships>
         <AttributeRelationship dwd:design-time-name="f5c1300f-3c22-4f5b-bd13-c749798881e4">
           <AttributeID>Hour</AttributeID>
@@ -183,14 +197,35 @@
       <Name>Second</Name>
       <Type>Seconds</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="1f4224eb-f15a-4e0d-999e-27e0b059b8f6">
+        <KeyColumn dwd:design-time-name="6004b72d-9ea2-4b73-97f5-22646181d2f4">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="497a1adb-e5b5-416c-8b27-3069e9be2d1c">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3883cec8-a92d-4a7f-a96e-5f4f64a2f2f9">
             <TableID>dbo_Dim_Time</TableID>
             <ColumnID>Second</ColumnID>
           </Source>
         </KeyColumn>
+        <KeyColumn dwd:design-time-name="d85fdd59-fea8-44fc-9c18-78fae92c8d66">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7e91d267-441c-4b84-b600-728d52250369">
+            <TableID>dbo_Dim_Time</TableID>
+            <ColumnID>Hour</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="39109bc6-909d-4efb-9fa4-5ceac48d3942">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2c80406c-30c6-463c-a0ab-e7959f8d9608">
+            <TableID>dbo_Dim_Time</TableID>
+            <ColumnID>Minute</ColumnID>
+          </Source>
+        </KeyColumn>
       </KeyColumns>
+      <NameColumn dwd:design-time-name="599ce0e5-4692-4422-aa52-c34f1539a27a">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="02f7ffb8-65ae-4bc9-83d7-e4f0a71322a7">
+          <TableID>dbo_Dim_Time</TableID>
+          <ColumnID>Second</ColumnID>
+        </Source>
+      </NameColumn>
       <AttributeRelationships>
         <AttributeRelationship dwd:design-time-name="2bff1a12-d8d6-4c9c-b6f5-f7766b498216">
           <AttributeID>Minute</AttributeID>
@@ -221,6 +256,11 @@
           <ID>Second</ID>
           <Name>Second</Name>
           <SourceAttributeID>Second</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="1d1965a9-6155-4827-bb84-520192d50232">
+          <ID>Time Key</ID>
+          <Name>Time Key</Name>
+          <SourceAttributeID>Time Key</SourceAttributeID>
         </Level>
       </Levels>
     </Hierarchy>
