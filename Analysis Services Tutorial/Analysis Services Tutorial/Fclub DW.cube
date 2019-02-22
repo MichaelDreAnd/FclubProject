@@ -515,5 +515,5 @@
   <Source dwd:design-time-name="47358da4-459c-4222-ac5d-3a31ac5b4b96">
     <DataSourceViewID>Fclub DW</DataSourceViewID>
   </Source>
-  <ErrorConfiguration dwd:design-time-name="a61ed86a-04a7-49bd-9fd5-162b1b0fb856" />
+  <ErrorConfiguration dwd:design-time-name="a82adfc3-60b1-4945-b1cc-1bfe126dba85" />
 </Cube>
