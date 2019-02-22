@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Time_Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{E9CA4590-7467-44FD-9E81-2D5D5AB80130}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{B44C19DE-21D8-4644-BCDF-D3292BC7B487}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5F266732-EA6E-44B1-A24A-C8D840AD667A}"
-          SQLTask:SqlStatementSource="&#xA;declare @hour int&#xA;&#xA;declare @minute int&#xA;&#xA;declare @second int&#xA;&#xA;&#xA;set @hour=00&#xA;&#xA;&#xA;while @hour&lt;24&#xA;&#xA;begin&#xA;&#xA;set @minute=00&#xA;&#xA;while @minute&lt;60&#xA;&#xA;begin&#xA;&#xA;set @second=00&#xA;&#xA;while @second&lt;60&#xA;&#xA;begin&#xA;&#xA;&#xA;INSERT INTO [dbo].[Dim_Time]&#xA;&#xA;([TimeKey]&#xA;&#xA;,[Hour]&#xA;&#xA;,[Minute]&#xA;&#xA;,[Second])&#xA;&#xA;select&#xA;&#xA;(@hour*10000) + (@minute*100) + @second as TimeKey,&#xA;&#xA;@hour as [Hour],&#xA;&#xA;@minute as [Minute],&#xA;&#xA;@second as [Second]&#xA;&#xA;set @second=@second+1&#xA;&#xA;end&#xA;&#xA;set @minute=@minute+1&#xA;&#xA;end&#xA;&#xA;set @hour=@hour+1&#xA;&#xA;end" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="declare @hour int&#xA;&#xA;declare @minute int&#xA;&#xA;declare @second int&#xA;&#xA;&#xA;set @hour=00&#xA;&#xA;&#xA;while @hour&lt;24&#xA;&#xA;begin&#xA;&#xA;set @minute=00&#xA;&#xA;while @minute&lt;60&#xA;&#xA;begin&#xA;&#xA;set @second=00&#xA;&#xA;while @second&lt;60&#xA;&#xA;begin&#xA;&#xA;&#xA;INSERT INTO [dbo].[Dim_Time]&#xA;&#xA;([TimeKey]&#xA;&#xA;,[Hour]&#xA;&#xA;,[Minute]&#xA;&#xA;,[Second])&#xA;&#xA;select&#xA;&#xA;FORMAT((@hour*10000) + (@minute*100) + @second, '000000') as TimeKey,&#xA;&#xA;@hour as [Hour],&#xA;&#xA;@minute as [Minute],&#xA;&#xA;@second as [Second]&#xA;&#xA;set @second=@second+1&#xA;&#xA;end&#xA;&#xA;set @minute=@minute+1&#xA;&#xA;end&#xA;&#xA;set @hour=@hour+1&#xA;&#xA;end" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
